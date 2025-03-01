@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Display session schedules
         const sessionsDiv = document.createElement('div');
-        sessionsDiv.innerHTML = '<h2>Session Schedules</h2>';
+        sessionsDiv.innerHTML = '<h2>Order of Performance</h2>';
         sessionsDiv.style.marginBottom = '30px';
 
         // Table styles
@@ -1210,7 +1210,7 @@ function shuffleArray(array) {
     `;
 
     const loadingText = document.createElement('p');
-    loadingText.textContent = 'Please wait while we generate your schedule...';
+    loadingText.textContent = 'Please wait while we generate your program...';
 
     popupContent.appendChild(countdownTitle);
     popupContent.appendChild(countdownDisplay);
