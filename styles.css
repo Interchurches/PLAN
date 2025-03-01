@@ -1,0 +1,350 @@
+body {
+    font-family: Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+    color: #6a3a94;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 2px solid #ddd;
+}
+
+th, td {
+    padding: 2px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.choir-list {
+    margin-top: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+    align-items: center;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    font-size: 16px;
+    color: #333;
+}
+
+.checkbox-item input {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+.checkbox-item input:checked {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.checkbox-item input:checked::after {
+    content: "✔";
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.checkbox-item:hover {
+    transform: scale(1.05);
+}
+
+
+
+.error {
+    color: red;
+    margin-top: 5px;
+}
+
+.session-table {
+    margin-top: 30px;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.tab {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    margin-right: 5px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.tab.active {
+    background-color: white;
+    border-bottom: 1px solid white;
+    margin-bottom: -1px;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+    #quote{
+        max-width: 900px;
+       font-size: 16px;
+       line-height: 26px;
+       word-wrap: break-word;
+       overflow-wrap: break-word;
+       hyphens: auto;
+    } 
+ }
+
+ .slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+  }
+  
+  .slide {
+    display: none;
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .fade {
+    animation: fadeEffect 5s ease-in-out;
+  }
+
+  @keyframes fadeEffect {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+  }
+  :root {
+    --primary-color: #6a3a94; /* Deep purple */
+    --secondary-color: #4d9a51; /* Green */
+    --accent-color: #e6c619; /* Gold */
+    --text-color: #333333;
+    --light-bg: #f8f5ff;
+    --gradient-start: rgba(106, 58, 148, 0.8);
+    --gradient-end: rgba(77, 154, 81, 0.8);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica', sans-serif;
+  }
+  
+  body {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: white;
+    border-bottom: 4px solid var(--accent-color);
+  }
+  
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+  
+  .header-text {
+    flex-grow: 1;
+  }
+  
+  .header-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+  
+  .allocation-number {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .festival-section {
+    padding: 80px 40px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+  }
+  
+  .festival-title {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .festival-subtitle {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 60px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  
+  .light-section {
+    background-color: var(--light-bg);
+    padding: 60px 40px;
+    text-align: center;
+    border-top: 2px solid rgba(106, 58, 148, 0.2);
+    border-bottom: 2px solid rgba(106, 58, 148, 0.2);
+  }
+  
+  .light-title {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+  
+  .bible-quote {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background-color: white;
+    border-left: 4px solid var(--secondary-color);
+    text-align: left;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bible-reference {
+    text-align: right;
+    font-style: italic;
+    color: var(--primary-color);
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+      padding: 15px;
+    }
+    
+    .logo {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    
+    .festival-title {
+      font-size: 2rem;
+    }
+    
+    .festival-subtitle {
+      font-size: 1rem;
+    }
+    
+    .bible-quote {
+      padding: 15px;
+    }
+
+    
+    
+  }
