@@ -137,33 +137,33 @@ document.addEventListener('DOMContentLoaded', function () {
         if (scheduleResult) {
             scheduleResult.innerHTML = '';
         }
-        
+
         // Make sure popup exists
         let popupOverlay = document.getElementById('countdownOverlay');
         let countdownDisplay = document.getElementById('countdownDisplay');
-        
+
         // If popup doesn't exist, create it again
         if (!popupOverlay || !countdownDisplay) {
             createCountdownPopup();
             popupOverlay = document.getElementById('countdownOverlay');
             countdownDisplay = document.getElementById('countdownDisplay');
         }
-        
+
         // Show countdown popup
         popupOverlay.style.display = 'flex';
         let secondsLeft = 5;
         countdownDisplay.textContent = secondsLeft;
-        
+
         // Start countdown
-        const countdownInterval = setInterval(function() {
+        const countdownInterval = setInterval(function () {
             secondsLeft--;
             countdownDisplay.textContent = secondsLeft;
-            
+
             if (secondsLeft <= 0) {
                 // Stop countdown and hide popup
                 clearInterval(countdownInterval);
                 popupOverlay.style.display = 'none';
-                
+
                 // Only generate and display the schedule after countdown finishes
                 generateScheduleLogic();
             }
@@ -174,10 +174,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function generateScheduleLogic() {
         // Store the original content for later restoration
         const originalContent = document.body.innerHTML;
-        
+
         // Clear the entire body content
         document.body.innerHTML = '';
-        
+
         // Create the results page container
         const resultsContainer = document.createElement('div');
         resultsContainer.className = 'results-container';
@@ -187,11 +187,11 @@ document.addEventListener('DOMContentLoaded', function () {
             padding: 20px;
             font-family: Arial, sans-serif;
         `;
-        
+
         // Create header for results page
         const header = document.createElement('div');
-        header.innerHTML = '<h1>Performance Schedule</h1>';
-        
+        header.innerHTML = '<h1>ICMF 2025 Performance Schedule</h1>';
+
         // Create button container
         const buttonContainer = document.createElement('div');
         buttonContainer.style.cssText = `
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
             display: flex;
             gap: 10px;
         `;
-        
+
         // Back button
         const backButton = document.createElement('button');
         backButton.textContent = 'Back to Form';
@@ -213,15 +213,15 @@ document.addEventListener('DOMContentLoaded', function () {
             cursor: pointer;
             font-size: 16px;
         `;
-        backButton.addEventListener('click', function() {
+        backButton.addEventListener('click', function () {
             // Restore the original content
             document.body.innerHTML = originalContent;
-            
+
             // Reattach all event listeners and recreate popup
             attachEventListeners();
             createCountdownPopup();
         });
-        
+
         // Print button
         const printButton = document.createElement('button');
         printButton.textContent = 'Print Performance Program';
@@ -235,32 +235,32 @@ document.addEventListener('DOMContentLoaded', function () {
             cursor: pointer;
             font-size: 16px;
         `;
-        printButton.addEventListener('click', function() {
+        printButton.addEventListener('click', function () {
             // Hide the buttons before printing
             buttonContainer.style.display = 'none';
             window.print();
             // Show the buttons after printing
             buttonContainer.style.display = 'flex';
         });
-        
+
         // Add buttons to container
         buttonContainer.appendChild(backButton);
         buttonContainer.appendChild(printButton);
-        
+
         // Add button container to header
         header.appendChild(buttonContainer);
-        
+
         // Add header to results container
         resultsContainer.appendChild(header);
-        
+
         // Create container for schedule results
         const scheduleResult = document.createElement('div');
         scheduleResult.id = 'scheduleResult';
         resultsContainer.appendChild(scheduleResult);
-        
+
         // Add results container to body
         document.body.appendChild(resultsContainer);
-        
+
         // Get choirs for each item
         const itemChoirs = {
             'A': choirs.filter(choir => choir.items.includes('A')),
@@ -274,10 +274,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Generate randomized performance orders for each item
         const itemPerformanceOrders = generatePerformanceOrders(itemChoirs);
-        
+
         // Display session schedules
         const sessionsDiv = document.createElement('div');
-        sessionsDiv.innerHTML = '<h2>Session Schedules</h2>';
+        sessionsDiv.innerHTML = '<h2>Order of Performance</h2>';
         sessionsDiv.style.marginBottom = '30px';
 
         // Table styles
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
             margin-bottom: 20px;
             box-shadow: 0 2px 3px rgba(0,0,0,0.1);
         `;
-        
+
         const thStyle = `
             background-color: #f2f2f2;
             padding: 12px;
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
             border: 1px solid #ddd;
             font-weight: bold;
         `;
-        
+
         const tdStyle = `
             padding: 10px;
             border: 1px solid #ddd;
@@ -315,10 +315,10 @@ document.addEventListener('DOMContentLoaded', function () {
         createSessionTable('Session 4', ['D'], itemPerformanceOrders, sessionsDiv, thStyle, tdStyle, tableStyle);
 
         scheduleResult.appendChild(sessionsDiv);
-        
- // Add CSS for print styles
- const printStyles = document.createElement('style');
- printStyles.textContent = `
+
+        // Add CSS for print styles
+        const printStyles = document.createElement('style');
+        printStyles.textContent = `
      @media print {
          /* Hide UI elements during printing */
          .back-btn, .print-btn, #btn-container {
@@ -392,14 +392,13 @@ document.addEventListener('DOMContentLoaded', function () {
          }
      }
  `;
- document.head.appendChild(printStyles);
- 
         document.head.appendChild(printStyles);
-        
+
+        document.head.appendChild(printStyles);
+
         // Scroll to top of the page
         window.scrollTo(0, 0);
     }
-    
     // Function to create the countdown popup
     function createCountdownPopup() {
         // Remove existing popup if it exists
@@ -407,32 +406,79 @@ document.addEventListener('DOMContentLoaded', function () {
         if (existingPopup) {
             existingPopup.remove();
         }
-        
+
         // Create popup elements and add them to the DOM
         const popupOverlay = document.createElement('div');
         popupOverlay.id = 'countdownOverlay';
         popupOverlay.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        `;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    `;
 
         const popupContent = document.createElement('div');
         popupContent.id = 'countdownPopup';
         popupContent.style.cssText = `
-            background-color: white;
-            padding: 30px 50px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        `;
+        background-color: white;
+        padding: 30px 50px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    `;
+
+        // Logo container with loading animation
+        const logoContainer = document.createElement('div');
+        logoContainer.id = 'logoContainer';
+        logoContainer.style.cssText = `
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 20px auto;
+        position: relative;
+    `;
+
+        // Placeholder for the logo
+        const logoPlaceholder = document.createElement('div');
+        logoPlaceholder.id = 'logoPlaceholder';
+        logoPlaceholder.style.cssText = `
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    `;
+
+        // Loading spinner animation that wraps around the logo
+        const loadingSpinner = document.createElement('div');
+        loadingSpinner.id = 'loadingSpinner';
+        loadingSpinner.style.cssText = `
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 3px solid transparent;
+        border-top-color: #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    `;
+
+        // Add the loading animation keyframes to the document
+        const styleSheet = document.createElement('style');
+        styleSheet.type = 'text/css';
+        styleSheet.innerText = `
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+        document.head.appendChild(styleSheet);
 
         const countdownTitle = document.createElement('h2');
         countdownTitle.textContent = 'Generating order of Presentation';
@@ -441,22 +487,28 @@ document.addEventListener('DOMContentLoaded', function () {
         const countdownDisplay = document.createElement('div');
         countdownDisplay.id = 'countdownDisplay';
         countdownDisplay.style.cssText = `
-            font-size: 48px;
-            font-weight: bold;
-            color: #333;
-            margin: 20px 0;
-        `;
+        font-size: 48px;
+        font-weight: bold;
+        color: #333;
+        margin: 20px 0;
+    `;
 
         const loadingText = document.createElement('p');
         loadingText.textContent = 'Please wait while we generate your schedule...';
 
+        // Assemble the logo container components
+        logoContainer.appendChild(logoPlaceholder);
+        logoContainer.appendChild(loadingSpinner);
+
+        // Build the popup
+        popupContent.appendChild(logoContainer);
         popupContent.appendChild(countdownTitle);
         popupContent.appendChild(countdownDisplay);
         popupContent.appendChild(loadingText);
         popupOverlay.appendChild(popupContent);
         document.body.appendChild(popupOverlay);
     }
-    
+    document.getElementById('logoPlaceholder').style.backgroundImage = "url('assets/interchurches.png')";
     // Function to reattach all event listeners after going back to the form
     function attachEventListeners() {
         // Tab switching
@@ -473,9 +525,9 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('content-manual').classList.add('active');
             document.getElementById('content-preset').classList.remove('active');
         });
-        
+
         // Add choir button
-        document.getElementById('addChoir').addEventListener('click', function() {
+        document.getElementById('addChoir').addEventListener('click', function () {
             // The addChoir event listener code
             let choirName = "";
 
@@ -550,9 +602,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById(`item${item}`).checked = false;
             });
         });
-        
+
         // Generate schedule button
-        document.getElementById('generateSchedule').addEventListener('click', function() {
+        document.getElementById('generateSchedule').addEventListener('click', function () {
             if (choirs.length < 2) {
                 alert('Please add at least two choirs to generate a schedule.');
                 return;
@@ -563,39 +615,39 @@ document.addEventListener('DOMContentLoaded', function () {
             if (scheduleResult) {
                 scheduleResult.innerHTML = '';
             }
-            
+
             // Make sure popup exists
             let popupOverlay = document.getElementById('countdownOverlay');
             let countdownDisplay = document.getElementById('countdownDisplay');
-            
+
             // If popup doesn't exist, create it again
             if (!popupOverlay || !countdownDisplay) {
                 createCountdownPopup();
                 popupOverlay = document.getElementById('countdownOverlay');
                 countdownDisplay = document.getElementById('countdownDisplay');
             }
-            
+
             // Show countdown popup
             popupOverlay.style.display = 'flex';
             let secondsLeft = 5;
             countdownDisplay.textContent = secondsLeft;
-            
+
             // Start countdown
-            const countdownInterval = setInterval(function() {
+            const countdownInterval = setInterval(function () {
                 secondsLeft--;
                 countdownDisplay.textContent = secondsLeft;
-                
+
                 if (secondsLeft <= 0) {
                     // Stop countdown and hide popup
                     clearInterval(countdownInterval);
                     popupOverlay.style.display = 'none';
-                    
+
                     // Only generate and display the schedule after countdown finishes
                     generateScheduleLogic();
                 }
             }, 1000);
         });
-        
+
         // Reattach delete button event listeners
         document.querySelectorAll('.delete-btn').forEach(button => {
             button.addEventListener('click', function () {
@@ -606,38 +658,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-// Function to create alternating session tables (for Sessions 1 and 2)
-function createAlternatingSessionTable(sessionName, items, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
-    if (items.length !== 2) {
-        console.error("Alternating session must have exactly 2 items");
-        return;
-    }
-    
-    const item1 = items[0];
-    const item2 = items[1];
-    
-    const sessionDiv = document.createElement('div');
-    sessionDiv.className = 'session-table';
-    sessionDiv.style.marginBottom = '30px';
-    sessionDiv.innerHTML = `<h3>${sessionName} (Items ${items.join(', ')})</h3>`;
+    // Function to create alternating session tables (for Sessions 1 and 2)
+    function createAlternatingSessionTable(sessionName, items, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
+        if (items.length !== 2) {
+            console.error("Alternating session must have exactly 2 items");
+            return;
+        }
 
-    // Check if any choirs are performing in this session
-    const choirs1 = itemPerformanceOrders[item1] || [];
-    const choirs2 = itemPerformanceOrders[item2] || [];
-    
-    if (choirs1.length === 0 && choirs2.length === 0) {
-        sessionDiv.innerHTML += '<p>No choirs scheduled for this session.</p>';
-        container.appendChild(sessionDiv);
-        return;
-    }
+        const item1 = items[0];
+        const item2 = items[1];
 
-    // Create a single table that shows the alternating performances
-    const table = document.createElement('table');
-    table.className = 'schedule-table';
-    table.style.cssText = tableStyle;
-    
-    const thead = document.createElement('thead');
-    thead.innerHTML = `
+        const sessionDiv = document.createElement('div');
+        sessionDiv.className = 'session-table';
+        sessionDiv.style.marginBottom = '30px';
+        sessionDiv.innerHTML = `<h3>${sessionName} (Items ${items.join(', ')})</h3>`;
+
+        // Check if any choirs are performing in this session
+        const choirs1 = itemPerformanceOrders[item1] || [];
+        const choirs2 = itemPerformanceOrders[item2] || [];
+
+        if (choirs1.length === 0 && choirs2.length === 0) {
+            sessionDiv.innerHTML += '<p>No choirs scheduled for this session.</p>';
+            container.appendChild(sessionDiv);
+            return;
+        }
+
+        // Create a single table that shows the alternating performances
+        const table = document.createElement('table');
+        table.className = 'schedule-table';
+        table.style.cssText = tableStyle;
+
+        const thead = document.createElement('thead');
+        thead.innerHTML = `
         <tr>
             <th colspan="3" style="${thStyle}">Alternating Performance Order</th>
         </tr>
@@ -647,126 +699,126 @@ function createAlternatingSessionTable(sessionName, items, itemPerformanceOrders
             <th style="${thStyle}">Item</th>
         </tr>
     `;
-    
-    const tbody = document.createElement('tbody');
-    
-    // Create alternating schedule
-    let performanceCounter = 1;
-    
-    // Create a map to keep track of choir IDs for each item
-    const performingChoirs1 = choirs1.map(choir => ({ choir, item: item1 }));
-    const performingChoirs2 = choirs2.map(choir => ({ choir, item: item2 }));
-    
-    // Shuffle these arrays for randomness
-    shuffleArray(performingChoirs1);
-    shuffleArray(performingChoirs2);
-    
-    // Arrays to keep track of the remaining performances
-    let remaining1 = [...performingChoirs1];
-    let remaining2 = [...performingChoirs2];
-    
-    // Set to track last choir ID to prevent back-to-back performances
-    let lastChoirId = null;
-    
-    // Force strict alternating pattern by using currentItem
-    let currentItem = item1; // Start with item1
-    
-    // Continue until all performances are scheduled
-    while (remaining1.length > 0 || remaining2.length > 0) {
-        // Determine which item to schedule based on strict alternation
-        let nextRemaining, nextItem;
-        
-        if (currentItem === item1) {
-            nextRemaining = remaining1;
-            nextItem = item1;
-            // If no more choirs for item1, switch to item2
-            if (remaining1.length === 0) {
-                nextRemaining = remaining2;
-                nextItem = item2;
-                currentItem = item2; // Update current item
-            }
-        } else {
-            nextRemaining = remaining2;
-            nextItem = item2;
-            // If no more choirs for item2, switch to item1
-            if (remaining2.length === 0) {
+
+        const tbody = document.createElement('tbody');
+
+        // Create alternating schedule
+        let performanceCounter = 1;
+
+        // Create a map to keep track of choir IDs for each item
+        const performingChoirs1 = choirs1.map(choir => ({ choir, item: item1 }));
+        const performingChoirs2 = choirs2.map(choir => ({ choir, item: item2 }));
+
+        // Shuffle these arrays for randomness
+        shuffleArray(performingChoirs1);
+        shuffleArray(performingChoirs2);
+
+        // Arrays to keep track of the remaining performances
+        let remaining1 = [...performingChoirs1];
+        let remaining2 = [...performingChoirs2];
+
+        // Set to track last choir ID to prevent back-to-back performances
+        let lastChoirId = null;
+
+        // Force strict alternating pattern by using currentItem
+        let currentItem = item1; // Start with item1
+
+        // Continue until all performances are scheduled
+        while (remaining1.length > 0 || remaining2.length > 0) {
+            // Determine which item to schedule based on strict alternation
+            let nextRemaining, nextItem;
+
+            if (currentItem === item1) {
                 nextRemaining = remaining1;
                 nextItem = item1;
-                currentItem = item1; // Update current item
+                // If no more choirs for item1, switch to item2
+                if (remaining1.length === 0) {
+                    nextRemaining = remaining2;
+                    nextItem = item2;
+                    currentItem = item2; // Update current item
+                }
+            } else {
+                nextRemaining = remaining2;
+                nextItem = item2;
+                // If no more choirs for item2, switch to item1
+                if (remaining2.length === 0) {
+                    nextRemaining = remaining1;
+                    nextItem = item1;
+                    currentItem = item1; // Update current item
+                }
             }
-        }
-        
-        // Find a choir that's not the same as the last one
-        let validChoirIndex = -1;
-        for (let i = 0; i < nextRemaining.length; i++) {
-            if (nextRemaining[i].choir.id !== lastChoirId) {
-                validChoirIndex = i;
-                break;
+
+            // Find a choir that's not the same as the last one
+            let validChoirIndex = -1;
+            for (let i = 0; i < nextRemaining.length; i++) {
+                if (nextRemaining[i].choir.id !== lastChoirId) {
+                    validChoirIndex = i;
+                    break;
+                }
             }
-        }
-        
-        // If all choirs would create a back-to-back performance, pick one anyway
-        if (validChoirIndex === -1) {
-            validChoirIndex = 0;
-        }
-        
-        // Get the next choir to perform
-        const nextPerformance = nextRemaining.splice(validChoirIndex, 1)[0];
-        
-        // Create the row
-        const row = document.createElement('tr');
-        row.innerHTML = `
+
+            // If all choirs would create a back-to-back performance, pick one anyway
+            if (validChoirIndex === -1) {
+                validChoirIndex = 0;
+            }
+
+            // Get the next choir to perform
+            const nextPerformance = nextRemaining.splice(validChoirIndex, 1)[0];
+
+            // Create the row
+            const row = document.createElement('tr');
+            row.innerHTML = `
             <td style="${tdStyle}">${performanceCounter}</td>
             <td style="${tdStyle}">${nextPerformance.choir.name}</td>
             <td style="${tdStyle}">${nextPerformance.item}</td>
         `;
-        tbody.appendChild(row);
-        
-        // Update last choir ID
-        lastChoirId = nextPerformance.choir.id;
-        
-        // Increment performance counter
-        performanceCounter++;
-        
-        // Toggle to the other item for strict alternation
-        currentItem = currentItem === item1 ? item2 : item1;
-    }
-    
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    sessionDiv.appendChild(table);
-    container.appendChild(sessionDiv);
-}
+            tbody.appendChild(row);
 
-// Original session table function (for Session 4)
-function createSessionTable(sessionName, items, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
-    const sessionDiv = document.createElement('div');
-    sessionDiv.className = 'session-table';
-    sessionDiv.style.marginBottom = '30px';
-    sessionDiv.innerHTML = `<h3>${sessionName} (Items ${items.join(', ')})</h3>`;
+            // Update last choir ID
+            lastChoirId = nextPerformance.choir.id;
 
-    // Check if any choirs are performing in this session
-    let hasPerformers = false;
-    items.forEach(item => {
-        if (itemPerformanceOrders[item] && itemPerformanceOrders[item].length > 0) {
-            hasPerformers = true;
+            // Increment performance counter
+            performanceCounter++;
+
+            // Toggle to the other item for strict alternation
+            currentItem = currentItem === item1 ? item2 : item1;
         }
-    });
 
-    if (!hasPerformers) {
-        sessionDiv.innerHTML += '<p>No choirs scheduled for this session.</p>';
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        sessionDiv.appendChild(table);
         container.appendChild(sessionDiv);
-        return;
     }
 
-    items.forEach(item => {
-        if (itemPerformanceOrders[item] && itemPerformanceOrders[item].length > 0) {
-            const table = document.createElement('table');
-            table.className = 'schedule-table';
-            table.style.cssText = tableStyle;
-            
-            const thead = document.createElement('thead');
-            thead.innerHTML = `
+    // Original session table function (for Session 4)
+    function createSessionTable(sessionName, items, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
+        const sessionDiv = document.createElement('div');
+        sessionDiv.className = 'session-table';
+        sessionDiv.style.marginBottom = '30px';
+        sessionDiv.innerHTML = `<h3>${sessionName} (Items ${items.join(', ')})</h3>`;
+
+        // Check if any choirs are performing in this session
+        let hasPerformers = false;
+        items.forEach(item => {
+            if (itemPerformanceOrders[item] && itemPerformanceOrders[item].length > 0) {
+                hasPerformers = true;
+            }
+        });
+
+        if (!hasPerformers) {
+            sessionDiv.innerHTML += '<p>No choirs scheduled for this session.</p>';
+            container.appendChild(sessionDiv);
+            return;
+        }
+
+        items.forEach(item => {
+            if (itemPerformanceOrders[item] && itemPerformanceOrders[item].length > 0) {
+                const table = document.createElement('table');
+                table.className = 'schedule-table';
+                table.style.cssText = tableStyle;
+
+                const thead = document.createElement('thead');
+                thead.innerHTML = `
                 <tr>
                     <th colspan="2" style="${thStyle}">Item ${item}</th>
                 </tr>
@@ -775,223 +827,223 @@ function createSessionTable(sessionName, items, itemPerformanceOrders, container
                     <th style="${thStyle}">Choir Name</th>
                 </tr>
             `;
-            
-            const tbody = document.createElement('tbody');
 
-            itemPerformanceOrders[item].forEach((choir, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
+                const tbody = document.createElement('tbody');
+
+                itemPerformanceOrders[item].forEach((choir, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
                     <td style="${tdStyle}">${index + 1}</td>
                     <td style="${tdStyle}">${choir.name}</td>
                 `;
-                tbody.appendChild(row);
-            });
+                    tbody.appendChild(row);
+                });
 
-            table.appendChild(thead);
-            table.appendChild(tbody);
-            sessionDiv.appendChild(table);
-            sessionDiv.appendChild(document.createElement('br'));
-        }
-    });
-
-    container.appendChild(sessionDiv);
-}
-
-const tableStyle = 'width: 100%; border-collapse: collapse; margin-top: 20px;';
-const thStyle = 'background-color: #f2f2f2; padding: 10px; text-align: left; border: 1px solid #ddd;';
-const tdStyle = 'padding: 10px; border: 1px solid #ddd;';
-
-// Form submission handler
-document.getElementById('choirForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Show countdown overlay
-    const overlay = document.getElementById('countdownOverlay');
-    overlay.style.display = 'flex';
-    
-    // Initialize countdown from 3
-    let countdown = 3;
-    const countdownDisplay = document.getElementById('countdownDisplay');
-    countdownDisplay.textContent = countdown;
-    
-    // Update countdown every second
-    const countdownInterval = setInterval(function() {
-        countdown--;
-        countdownDisplay.textContent = countdown;
-        
-        if (countdown <= 0) {
-            clearInterval(countdownInterval);
-            
-            // Generate schedule after countdown
-            setTimeout(function() {
-                generateSchedule();
-                overlay.style.display = 'none';
-            }, 1000);
-        }
-    }, 1000);
-});
-
-// Main function to generate the schedule
-function generateSchedule() {
-    // Get input data
-    const choirInput = document.getElementById('choirData').value.trim();
-    if (!choirInput) {
-        alert('Please enter choir data');
-        return;
-    }
-    
-    try {
-        // Parse choir data
-        const choirData = JSON.parse(choirInput);
-        
-        // Organize choirs by items they perform
-        const itemChoirs = {
-            'A': [],
-            'B': [],
-            'C': [],
-            'D': [],
-            'E': [],
-            'F': [],
-            'G': []
-        };
-        
-        // Process choir data
-        choirData.forEach(choir => {
-            // Ensure choir has all required fields
-            if (!choir.id || !choir.name || !choir.items || !choir.ballotNumber) {
-                console.warn('Skipping incomplete choir data:', choir);
-                return;
+                table.appendChild(thead);
+                table.appendChild(tbody);
+                sessionDiv.appendChild(table);
+                sessionDiv.appendChild(document.createElement('br'));
             }
-            
-            // Add choir to relevant item lists
-            choir.items.forEach(item => {
-                if (itemChoirs[item]) {
-                    itemChoirs[item].push({
-                        id: choir.id,
-                        name: choir.name,
-                        ballotNumber: choir.ballotNumber,
-                        items: choir.items // Keep track of all items this choir performs
-                    });
-                }
-            });
         });
-        
-        // Generate performance orders for each item
-        const itemPerformanceOrders = generatePerformanceOrders(itemChoirs);
-        
-        // Clear previous results
-        const resultsContainer = document.getElementById('resultsContainer');
-        resultsContainer.innerHTML = '';
-        
-        // Create header
-        const header = document.createElement('h2');
-        header.textContent = 'Generated Performance Schedule';
-        resultsContainer.appendChild(header);
-        
-        // Create sessions
-        createSession1('Session 1', itemPerformanceOrders, resultsContainer, thStyle, tdStyle, tableStyle);
-        createSession2('Session 2', itemPerformanceOrders, resultsContainer, thStyle, tdStyle, tableStyle);
-        createMergedSession3('Session 3', itemPerformanceOrders, resultsContainer, thStyle, tdStyle, tableStyle);
-        createSession4('Session 4', itemPerformanceOrders, resultsContainer, thStyle, tdStyle, tableStyle);
-        
-        // Show results section
-        document.getElementById('resultsSection').style.display = 'block';
-        
-        // Scroll to results
-        resultsContainer.scrollIntoView({ behavior: 'smooth' });
-        
-    } catch (e) {
-        console.error('Error processing choir data:', e);
-        alert('Error processing choir data. Please check your input format.');
+
+        container.appendChild(sessionDiv);
     }
-}
 
-// Create Session 1 with alternating F and G items, preventing back-to-back performances
-function createSession1(sessionName, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
-    createAlternatingSessionTable(sessionName, ['F', 'G'], itemPerformanceOrders, container, thStyle, tdStyle, tableStyle);
-}
+    const tableStyle = 'width: 100%; border-collapse: collapse; margin-top: 20px;';
+    const thStyle = 'background-color: #f2f2f2; padding: 10px; text-align: left; border: 1px solid #ddd;';
+    const tdStyle = 'padding: 10px; border: 1px solid #ddd;';
 
-// Create Session 2 with alternating E and C items, preventing back-to-back performances
-function createSession2(sessionName, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
-    createAlternatingSessionTable(sessionName, ['E', 'C'], itemPerformanceOrders, container, thStyle, tdStyle, tableStyle);
-}
+    // Form submission handler
+    document.getElementById('choirForm').addEventListener('submit', function (event) {
+        event.preventDefault();
 
-// Create merged session 3 with A and B items combined and proper ordering
-function createMergedSession3(sessionName, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
-    const sessionDiv = document.createElement('div');
-    sessionDiv.className = 'session-table';
-    sessionDiv.style.marginBottom = '30px';
-    sessionDiv.innerHTML = `<h3>${sessionName} (Items A, B)</h3>`;
+        // Show countdown overlay
+        const overlay = document.getElementById('countdownOverlay');
+        overlay.style.display = 'flex';
 
-    // Get a unique list of choirs that perform in either A or B or both
-    const choirsInSession3 = new Map();
+        // Initialize countdown from 3
+        let countdown = 3;
+        const countdownDisplay = document.getElementById('countdownDisplay');
+        countdownDisplay.textContent = countdown;
 
-    // Gather all choirs from items A and B
-    ['A', 'B'].forEach(item => {
-        if (itemPerformanceOrders[item]) {
-            itemPerformanceOrders[item].forEach(choir => {
-                if (!choirsInSession3.has(choir.id)) {
-                    choirsInSession3.set(choir.id, {
-                        id: choir.id,
-                        name: choir.name,
-                        ballotNumber: choir.ballotNumber,
-                        items: choir.items.filter(i => i === 'A' || i === 'B'),
-                        originalItems: choir.items
-                    });
-                }
-            });
-        }
+        // Update countdown every second
+        const countdownInterval = setInterval(function () {
+            countdown--;
+            countdownDisplay.textContent = countdown;
+
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+
+                // Generate schedule after countdown
+                setTimeout(function () {
+                    generateSchedule();
+                    overlay.style.display = 'none';
+                }, 1000);
+            }
+        }, 1000);
     });
 
-    const session3Choirs = Array.from(choirsInSession3.values());
+    // Main function to generate the schedule
+    function generateSchedule() {
+        // Get input data
+        const choirInput = document.getElementById('choirData').value.trim();
+        if (!choirInput) {
+            alert('Please enter choir data');
+            return;
+        }
 
-    if (session3Choirs.length === 0) {
-        sessionDiv.innerHTML += '<p>No choirs scheduled for this session.</p>';
-        container.appendChild(sessionDiv);
-        return;
+        try {
+            // Parse choir data
+            const choirData = JSON.parse(choirInput);
+
+            // Organize choirs by items they perform
+            const itemChoirs = {
+                'A': [],
+                'B': [],
+                'C': [],
+                'D': [],
+                'E': [],
+                'F': [],
+                'G': []
+            };
+
+            // Process choir data
+            choirData.forEach(choir => {
+                // Ensure choir has all required fields
+                if (!choir.id || !choir.name || !choir.items || !choir.ballotNumber) {
+                    console.warn('Skipping incomplete choir data:', choir);
+                    return;
+                }
+
+                // Add choir to relevant item lists
+                choir.items.forEach(item => {
+                    if (itemChoirs[item]) {
+                        itemChoirs[item].push({
+                            id: choir.id,
+                            name: choir.name,
+                            ballotNumber: choir.ballotNumber,
+                            items: choir.items // Keep track of all items this choir performs
+                        });
+                    }
+                });
+            });
+
+            // Generate performance orders for each item
+            const itemPerformanceOrders = generatePerformanceOrders(itemChoirs);
+
+            // Clear previous results
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = '';
+
+            // Create header
+            const header = document.createElement('h2');
+            header.textContent = 'Generated Performance Schedule';
+            resultsContainer.appendChild(header);
+
+            // Create sessions
+            createSession1('Session 1', itemPerformanceOrders, resultsContainer, thStyle, tdStyle, tableStyle);
+            createSession2('Session 2', itemPerformanceOrders, resultsContainer, thStyle, tdStyle, tableStyle);
+            createMergedSession3('Session 3', itemPerformanceOrders, resultsContainer, thStyle, tdStyle, tableStyle);
+            createSession4('Session 4', itemPerformanceOrders, resultsContainer, thStyle, tdStyle, tableStyle);
+
+            // Show results section
+            document.getElementById('resultsSection').style.display = 'block';
+
+            // Scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+
+        } catch (e) {
+            console.error('Error processing choir data:', e);
+            alert('Error processing choir data. Please check your input format.');
+        }
     }
 
-    // Separate choirs into those performing both items and those performing just one
-    const bothItemsChoirs = session3Choirs.filter(choir => choir.items.includes('A') && choir.items.includes('B'));
-    const singleItemChoirs = session3Choirs.filter(choir => choir.items.length === 1);
-    
-    // Sort single item choirs by the item they perform (A or B)
-    const onlyAChoirs = singleItemChoirs.filter(choir => choir.items.includes('A'));
-    const onlyBChoirs = singleItemChoirs.filter(choir => choir.items.includes('B'));
-    
-    // Sort each group by ballot number
-    bothItemsChoirs.sort((a, b) => a.ballotNumber - b.ballotNumber);
-    onlyAChoirs.sort((a, b) => a.ballotNumber - b.ballotNumber);
-    onlyBChoirs.sort((a, b) => a.ballotNumber - b.ballotNumber);
-    
-    // Shuffle each group to add randomization while maintaining the grouping
-    const shuffledBothItemsChoirs = shuffleArray([...bothItemsChoirs]);
-    const shuffledOnlyAChoirs = shuffleArray([...onlyAChoirs]);
-    const shuffledOnlyBChoirs = shuffleArray([...onlyBChoirs]);
-    
-    // Arrange single-item choirs in alternating A/B order
-    const alternatingChoirs = [];
-    const maxSingleItems = Math.max(shuffledOnlyAChoirs.length, shuffledOnlyBChoirs.length);
-    
-    for (let i = 0; i < maxSingleItems; i++) {
-        if (i < shuffledOnlyAChoirs.length) {
-            alternatingChoirs.push(shuffledOnlyAChoirs[i]);
-        }
-        if (i < shuffledOnlyBChoirs.length) {
-            alternatingChoirs.push(shuffledOnlyBChoirs[i]);
-        }
+    // Create Session 1 with alternating F and G items, preventing back-to-back performances
+    function createSession1(sessionName, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
+        createAlternatingSessionTable(sessionName, ['F', 'G'], itemPerformanceOrders, container, thStyle, tdStyle, tableStyle);
     }
-    
-    // Final performance order: first those performing both items, then alternating A/B
-    const finalOrder = [...shuffledBothItemsChoirs, ...alternatingChoirs];
 
-    // Create a single table for Session 3
-    const table = document.createElement('table');
-    table.className = 'schedule-table';
-    table.style.cssText = tableStyle;
-    
-    const thead = document.createElement('thead');
-    thead.innerHTML = `
+    // Create Session 2 with alternating E and C items, preventing back-to-back performances
+    function createSession2(sessionName, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
+        createAlternatingSessionTable(sessionName, ['E', 'C'], itemPerformanceOrders, container, thStyle, tdStyle, tableStyle);
+    }
+
+    // Create merged session 3 with A and B items combined and proper ordering
+    function createMergedSession3(sessionName, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
+        const sessionDiv = document.createElement('div');
+        sessionDiv.className = 'session-table';
+        sessionDiv.style.marginBottom = '30px';
+        sessionDiv.innerHTML = `<h3>${sessionName} (Items A, B)</h3>`;
+
+        // Get a unique list of choirs that perform in either A or B or both
+        const choirsInSession3 = new Map();
+
+        // Gather all choirs from items A and B
+        ['A', 'B'].forEach(item => {
+            if (itemPerformanceOrders[item]) {
+                itemPerformanceOrders[item].forEach(choir => {
+                    if (!choirsInSession3.has(choir.id)) {
+                        choirsInSession3.set(choir.id, {
+                            id: choir.id,
+                            name: choir.name,
+                            ballotNumber: choir.ballotNumber,
+                            items: choir.items.filter(i => i === 'A' || i === 'B'),
+                            originalItems: choir.items
+                        });
+                    }
+                });
+            }
+        });
+
+        const session3Choirs = Array.from(choirsInSession3.values());
+
+        if (session3Choirs.length === 0) {
+            sessionDiv.innerHTML += '<p>No choirs scheduled for this session.</p>';
+            container.appendChild(sessionDiv);
+            return;
+        }
+
+        // Separate choirs into those performing both items and those performing just one
+        const bothItemsChoirs = session3Choirs.filter(choir => choir.items.includes('A') && choir.items.includes('B'));
+        const singleItemChoirs = session3Choirs.filter(choir => choir.items.length === 1);
+
+        // Sort single item choirs by the item they perform (A or B)
+        const onlyAChoirs = singleItemChoirs.filter(choir => choir.items.includes('A'));
+        const onlyBChoirs = singleItemChoirs.filter(choir => choir.items.includes('B'));
+
+        // Sort each group by ballot number
+        bothItemsChoirs.sort((a, b) => a.ballotNumber - b.ballotNumber);
+        onlyAChoirs.sort((a, b) => a.ballotNumber - b.ballotNumber);
+        onlyBChoirs.sort((a, b) => a.ballotNumber - b.ballotNumber);
+
+        // Shuffle each group to add randomization while maintaining the grouping
+        const shuffledBothItemsChoirs = shuffleArray([...bothItemsChoirs]);
+        const shuffledOnlyAChoirs = shuffleArray([...onlyAChoirs]);
+        const shuffledOnlyBChoirs = shuffleArray([...onlyBChoirs]);
+
+        // Arrange single-item choirs in alternating A/B order
+        const alternatingChoirs = [];
+        const maxSingleItems = Math.max(shuffledOnlyAChoirs.length, shuffledOnlyBChoirs.length);
+
+        for (let i = 0; i < maxSingleItems; i++) {
+            if (i < shuffledOnlyAChoirs.length) {
+                alternatingChoirs.push(shuffledOnlyAChoirs[i]);
+            }
+            if (i < shuffledOnlyBChoirs.length) {
+                alternatingChoirs.push(shuffledOnlyBChoirs[i]);
+            }
+        }
+
+        // Final performance order: first those performing both items, then alternating A/B
+        const finalOrder = [...shuffledBothItemsChoirs, ...alternatingChoirs];
+
+        // Create a single table for Session 3
+        const table = document.createElement('table');
+        table.className = 'schedule-table';
+        table.style.cssText = tableStyle;
+
+        const thead = document.createElement('thead');
+        thead.innerHTML = `
         <tr>
             <th colspan="3" style="${thStyle}">Performance for Items A & B</th>
         </tr>
@@ -1001,50 +1053,50 @@ function createMergedSession3(sessionName, itemPerformanceOrders, container, thS
             <th style="${thStyle}">Items Performing</th>
         </tr>
     `;
-    
-    const tbody = document.createElement('tbody');
 
-    finalOrder.forEach((choir, index) => {
-        const row = document.createElement('tr');
-        // Display which items from A and B the choir is performing
-        const itemsText = choir.items.join(', ');
+        const tbody = document.createElement('tbody');
 
-        row.innerHTML = `
+        finalOrder.forEach((choir, index) => {
+            const row = document.createElement('tr');
+            // Display which items from A and B the choir is performing
+            const itemsText = choir.items.join(', ');
+
+            row.innerHTML = `
             <td style="${tdStyle}">${index + 1}</td>
             <td style="${tdStyle}">${choir.name}</td>
             <td style="${tdStyle}">${itemsText}</td>
         `;
-        tbody.appendChild(row);
-    });
+            tbody.appendChild(row);
+        });
 
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    sessionDiv.appendChild(table);
-    container.appendChild(sessionDiv);
-}
-
-// Create Session 4 with Item D performances
-function createSession4(sessionName, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
-    const sessionDiv = document.createElement('div');
-    sessionDiv.className = 'session-table';
-    sessionDiv.style.marginBottom = '30px';
-    sessionDiv.innerHTML = `<h3>${sessionName} (Item D)</h3>`;
-
-    const itemD = itemPerformanceOrders['D'] || [];
-
-    if (itemD.length === 0) {
-        sessionDiv.innerHTML += '<p>No choirs scheduled for this session.</p>';
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        sessionDiv.appendChild(table);
         container.appendChild(sessionDiv);
-        return;
     }
 
-    // Create table n 4
-    const table = document.createElement('table');
-    table.className = 'schedule-table';
-    table.style.cssText = tableStyle;
-    
-    const thead = document.createElement('thead');
-    thead.innerHTML = `
+    // Create Session 4 with Item D performances
+    function createSession4(sessionName, itemPerformanceOrders, container, thStyle, tdStyle, tableStyle) {
+        const sessionDiv = document.createElement('div');
+        sessionDiv.className = 'session-table';
+        sessionDiv.style.marginBottom = '30px';
+        sessionDiv.innerHTML = `<h3>${sessionName} (Item D)</h3>`;
+
+        const itemD = itemPerformanceOrders['D'] || [];
+
+        if (itemD.length === 0) {
+            sessionDiv.innerHTML += '<p>No choirs scheduled for this session.</p>';
+            container.appendChild(sessionDiv);
+            return;
+        }
+
+        // Create table n 4
+        const table = document.createElement('table');
+        table.className = 'schedule-table';
+        table.style.cssText = tableStyle;
+
+        const thead = document.createElement('thead');
+        thead.innerHTML = `
         <tr>
             <th colspan="2" style="${thStyle}">Performance for Item D</th>
         </tr>
@@ -1053,122 +1105,122 @@ function createSession4(sessionName, itemPerformanceOrders, container, thStyle, 
             <th style="${thStyle}">Choir Name</th>
         </tr>
     `;
-    
-    const tbody = document.createElement('tbody');
 
-    itemD.forEach((choir, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
+        const tbody = document.createElement('tbody');
+
+        itemD.forEach((choir, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
             <td style="${tdStyle}">${index + 1}</td>
             <td style="${tdStyle}">${choir.name}</td>
         `;
-        tbody.appendChild(row);
-    });
+            tbody.appendChild(row);
+        });
 
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    sessionDiv.appendChild(table);
-    container.appendChild(sessionDiv);
-}
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        sessionDiv.appendChild(table);
+        container.appendChild(sessionDiv);
+    }
 
-// Generate randomized performance orders
-function generatePerformanceOrders(itemChoirs) {
-    const itemPerformanceOrders = {};
-    const positionConstraints = {}; // To track which choirs performed at which positions
+    // Generate randomized performance orders
+    function generatePerformanceOrders(itemChoirs) {
+        const itemPerformanceOrders = {};
+        const positionConstraints = {}; // To track which choirs performed at which positions
 
-    // Process items in order
-    const items = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+        // Process items in order
+        const items = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
-    items.forEach(item => {
-        const choirsForItem = itemChoirs[item];
+        items.forEach(item => {
+            const choirsForItem = itemChoirs[item];
 
-        if (choirsForItem && choirsForItem.length > 0) {
-            // Sort first by ballot number to create initial order
-            const sortedChoirs = [...choirsForItem].sort((a, b) => a.ballotNumber - b.ballotNumber);
+            if (choirsForItem && choirsForItem.length > 0) {
+                // Sort first by ballot number to create initial order
+                const sortedChoirs = [...choirsForItem].sort((a, b) => a.ballotNumber - b.ballotNumber);
 
-            // Now shuffle while respecting constraints
-            const shuffledOrder = shuffleWithConstraints(sortedChoirs, positionConstraints);
+                // Now shuffle while respecting constraints
+                const shuffledOrder = shuffleWithConstraints(sortedChoirs, positionConstraints);
 
-            // Update position constraints
-            shuffledOrder.forEach((choir, position) => {
-                if (!positionConstraints[choir.id]) {
-                    positionConstraints[choir.id] = [];
+                // Update position constraints
+                shuffledOrder.forEach((choir, position) => {
+                    if (!positionConstraints[choir.id]) {
+                        positionConstraints[choir.id] = [];
+                    }
+                    positionConstraints[choir.id].push(position);
+                });
+
+                itemPerformanceOrders[item] = shuffledOrder;
+            } else {
+                itemPerformanceOrders[item] = [];
+            }
+        });
+
+        return itemPerformanceOrders;
+    }
+
+    // Shuffle choirs while respecting position constraints
+    function shuffleWithConstraints(choirs, positionConstraints) {
+        // Make a copy to avoid modifying the original
+        const choirsCopy = [...choirs];
+        const result = [];
+        const positions = Array.from(Array(choirsCopy.length).keys());
+
+        // Assign positions based on constraints
+        while (choirsCopy.length > 0) {
+            // Find a choir that can be placed at an available position
+            let placed = false;
+
+            // Randomize the order in which we try choirs
+            const choirIndices = Array.from(Array(choirsCopy.length).keys());
+            shuffleArray(choirIndices);
+
+            for (let i of choirIndices) {
+                const choir = choirsCopy[i];
+
+                // Get positions this choir has already performed at
+                const previousPositions = positionConstraints[choir.id] || [];
+
+                // Find available positions this choir hasn't performed at
+                const availablePositions = positions.filter(pos => !previousPositions.includes(pos));
+
+                if (availablePositions.length > 0) {
+                    // Choose a random available position
+                    shuffleArray(availablePositions);
+                    const chosenPosition = availablePositions[0];
+
+                    // Place choir at this position
+                    result[chosenPosition] = choir;
+
+                    // Remove choir and position from available lists
+                    choirsCopy.splice(i, 1);
+                    positions.splice(positions.indexOf(chosenPosition), 1);
+
+                    placed = true;
+                    break;
                 }
-                positionConstraints[choir.id].push(position);
-            });
+            }
 
-            itemPerformanceOrders[item] = shuffledOrder;
-        } else {
-            itemPerformanceOrders[item] = [];
-        }
-    });
-
-    return itemPerformanceOrders;
-}
-
-// Shuffle choirs while respecting position constraints
-function shuffleWithConstraints(choirs, positionConstraints) {
-    // Make a copy to avoid modifying the original
-    const choirsCopy = [...choirs];
-    const result = [];
-    const positions = Array.from(Array(choirsCopy.length).keys());
-
-    // Assign positions based on constraints
-    while (choirsCopy.length > 0) {
-        // Find a choir that can be placed at an available position
-        let placed = false;
-
-        // Randomize the order in which we try choirs
-        const choirIndices = Array.from(Array(choirsCopy.length).keys());
-        shuffleArray(choirIndices);
-
-        for (let i of choirIndices) {
-            const choir = choirsCopy[i];
-
-            // Get positions this choir has already performed at
-            const previousPositions = positionConstraints[choir.id] || [];
-
-            // Find available positions this choir hasn't performed at
-            const availablePositions = positions.filter(pos => !previousPositions.includes(pos));
-
-            if (availablePositions.length > 0) {
-                // Choose a random available position
-                shuffleArray(availablePositions);
-                const chosenPosition = availablePositions[0];
-
-                // Place choir at this position
-                result[chosenPosition] = choir;
-
-                // Remove choir and position from available lists
-                choirsCopy.splice(i, 1);
-                positions.splice(positions.indexOf(chosenPosition), 1);
-
-                placed = true;
-                break;
+            // If no choir could be placed with constraints, place a random choir
+            if (!placed && choirsCopy.length > 0) {
+                shuffleArray(choirsCopy);
+                const choir = choirsCopy.pop();
+                const position = positions.pop();
+                result[position] = choir;
             }
         }
 
-        // If no choir could be placed with constraints, place a random choir
-        if (!placed && choirsCopy.length > 0) {
-            shuffleArray(choirsCopy);
-            const choir = choirsCopy.pop();
-            const position = positions.pop();
-            result[position] = choir;
+        // Remove undefined entries (in case some positions couldn't be filled)
+        return result.filter(entry => entry !== undefined);
+    }
+
+    // Shuffle array using Fisher-Yates algorithm
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
+        return array;
     }
-
-    // Remove undefined entries (in case some positions couldn't be filled)
-    return result.filter(entry => entry !== undefined);
-}
-
-// Shuffle array using Fisher-Yates algorithm
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
 
     // Create popup elements and add them to the DOM
     const popupOverlay = document.createElement('div');
@@ -1210,7 +1262,7 @@ function shuffleArray(array) {
     `;
 
     const loadingText = document.createElement('p');
-    loadingText.textContent = 'Please wait while we generate your schedule...';
+    loadingText.textContent = 'Please wait while we generate your program...';
 
     popupContent.appendChild(countdownTitle);
     popupContent.appendChild(countdownDisplay);
