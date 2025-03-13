@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', function () {
         popupOverlay.appendChild(popupContent);
         document.body.appendChild(popupOverlay);
     }
-    document.getElementById('logoPlaceholder').style.backgroundImage = "url('assets/interchurches.png')";
+    document.getElementById('logoPlaceholder').style.backgroundImage = "url('./assets/interchurches.png')";
     // Function to reattach all event listeners after going back to the form
     function attachEventListeners() {
         // Tab switching
