@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
 
 :root {
     --deep-purple: #3d1a6e;
@@ -58,18 +58,19 @@ header {
 .header-text { flex-grow: 1; }
 
 .header-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.15rem;
+    font-family: 'Cormorant SC', serif;
+    font-size: 1.35rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     color: var(--gold-light);
 }
 
 .allocation-number {
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    color: rgba(255,255,255,0.75);
-    text-transform: uppercase;
+    font-size: 0.88rem;
+    font-family: 'Cormorant SC', serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.8);
     margin-top: 4px;
 }
 
@@ -82,12 +83,13 @@ header {
 }
 
 .light-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
+    font-family: 'Cormorant SC', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
     color: var(--mid-purple);
     font-style: italic;
     margin-bottom: 24px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 .bible-quote {
@@ -121,9 +123,11 @@ header {
 }
 
 .section-heading {
-    font-family: 'Cinzel', serif;
+    font-family: 'Cormorant SC', serif;
     color: var(--deep-purple);
-    font-size: 1.25rem;
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
     margin-bottom: 18px;
     padding-bottom: 10px;
     border-bottom: 2px solid var(--gold);
@@ -163,7 +167,7 @@ header {
     width: 44px; height: 44px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Cinzel', serif;
+    font-family: 'Cormorant SC', serif;
     font-size: 1.2rem;
     font-weight: 700;
     color: white;
@@ -175,7 +179,7 @@ header {
 .legend-card.major .legend-badge { background: var(--major-color); }
 .legend-card.common .legend-badge { background: var(--common-color); }
 
-.legend-title { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+.legend-title { font-family: 'Cormorant SC', serif; font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: 0.5px; }
 .legend-desc { font-size: 0.8rem; color: var(--text-light); margin-top: 3px; line-height: 1.4; }
 
 /* ─── FORM CARD ─── */
@@ -282,7 +286,7 @@ input[type="text"]:focus, input[type="number"]:focus, select:focus {
     width: 28px; height: 28px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Cinzel', serif;
+    font-family: 'Cormorant SC', serif;
     font-size: 0.85rem;
     font-weight: 700;
     color: white;
@@ -422,7 +426,7 @@ th {
     color: white;
     padding: 11px 12px;
     text-align: left;
-    font-family: 'Cinzel', serif;
+    font-family: 'Cormorant SC', serif;
     font-size: 0.82rem;
     letter-spacing: 0.5px;
     font-weight: 600;
@@ -497,8 +501,10 @@ tr:hover td { background: rgba(106,58,148,0.04); }
 }
 
 .results-header h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.6rem;
+    font-family: 'Cormorant SC', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
     color: var(--gold-light);
     margin-bottom: 6px;
 }
@@ -539,12 +545,12 @@ tr:hover td { background: rgba(106,58,148,0.04); }
     background: rgba(255,255,255,0.25);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Cinzel', serif;
+    font-family: 'Cormorant SC', serif;
     font-size: 1.1rem;
     font-weight: 700;
 }
 
-.session-title { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700; }
+.session-title { font-family: 'Cormorant SC', serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 1px; }
 .session-subtitle { font-size: 0.82rem; opacity: 0.85; margin-top: 2px; }
 
 .session-body { padding: 20px 24px; }
