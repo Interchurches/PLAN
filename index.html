@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,16 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="Assets/interchurches.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <style>
         .preloader {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(135deg, #3d1a6e, #1a5c2e);
             display: flex;
             flex-direction: column;
@@ -21,12 +26,42 @@
             z-index: 9999;
             transition: opacity 1s ease-out;
         }
-        .preloader.fade-out { opacity: 0; pointer-events: none; }
-        .preloader-logo { width: 120px; height: auto; animation: pulse 2s infinite; filter: drop-shadow(0 0 20px rgba(230,198,25,0.6)); }
-        .preloader-text { margin-top: 20px; font-family: 'Cinzel', serif; font-size: 14px; color: rgba(255,255,255,0.8); letter-spacing: 3px; text-transform: uppercase; }
-        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+
+        .preloader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .preloader-logo {
+            width: 120px;
+            height: auto;
+            animation: pulse 2s infinite;
+            filter: drop-shadow(0 0 20px rgba(230, 198, 25, 0.6));
+        }
+
+        .preloader-text {
+            margin-top: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <div class="preloader" id="preloader">
@@ -47,14 +82,17 @@
     <section class="light-section">
         <h3 class="light-title">...Hold Out Your Light.</h3>
         <div class="bible-quote">
-            <p>"You are the light of the world. A city on a hill cannot be hidden. Neither do people light a lamp and put it under a bowl. Instead they put it on its stand, and it gives light to everyone in the house. In the same way, let your light shine before men, that they may see your good deeds and glorify your Father in heaven"</p>
+            <p>"You are the light of the world. A city on a hill cannot be hidden. Neither do people light a lamp and
+                put it under a bowl. Instead they put it on its stand, and it gives light to everyone in the house. In
+                the same way, let your light shine before men, that they may see your good deeds and glorify your Father
+                in heaven"</p>
             <div class="bible-reference">Matthew 5:14-16</div>
         </div>
     </section>
 
     <!-- MAIN FORM CONTAINER -->
     <div class="container main-form-area" id="mainFormArea">
-        
+
         <!-- CLASS LEGEND -->
         <div class="class-legend">
             <h2 class="section-heading">Competition Classes</h2>
@@ -63,28 +101,32 @@
                     <div class="legend-badge">S</div>
                     <div class="legend-info">
                         <div class="legend-title">Super 5 Class</div>
-                        <div class="legend-desc">Up to 7 choirs · Items: SA, SB, SC… · Cannot enter Augmented or Major</div>
+                        <div class="legend-desc">Up to 7 choirs · Items: SA, SB, SC… · Cannot enter Augmented or Major
+                        </div>
                     </div>
                 </div>
                 <div class="legend-card augmented">
                     <div class="legend-badge">A</div>
                     <div class="legend-info">
                         <div class="legend-title">Augmented Class</div>
-                        <div class="legend-desc">Unlimited choirs · Items: AA, AB, AC… · Cannot enter Super 5 or Major</div>
+                        <div class="legend-desc">Unlimited choirs · Items: AA, AB, AC… · Cannot enter Super 5 or Major
+                        </div>
                     </div>
                 </div>
                 <div class="legend-card major">
                     <div class="legend-badge">M</div>
                     <div class="legend-info">
                         <div class="legend-title">Major Class</div>
-                        <div class="legend-desc">Unlimited choirs · Items: MA, MB, MC… · Cannot enter Super 5 or Augmented</div>
+                        <div class="legend-desc">Unlimited choirs · Items: MA, MB, MC… · Cannot enter Super 5 or
+                            Augmented</div>
                     </div>
                 </div>
                 <div class="legend-card common">
                     <div class="legend-badge">C</div>
                     <div class="legend-info">
                         <div class="legend-title">Common Class</div>
-                        <div class="legend-desc">All choirs eligible · Items: CF, CM · All choirs can enter regardless of class</div>
+                        <div class="legend-desc">All choirs eligible · Items: CF, CM · All choirs can enter regardless
+                            of class</div>
                     </div>
                 </div>
             </div>
@@ -101,39 +143,45 @@
 
             <div class="tab-content active" id="content-preset">
                 <div class="form-group">
-                    <label for="presetChoir">Select Choir:</label>
-                    <select id="presetChoir">
+                    <label for="presetChoir">Select Choir:</label><select id="presetChoir">
                         <option value="">-- Select a Choir --</option>
                         <option value="ACK - St. Pauls - Athi River">1. ACK - St. Pauls - Athi River</option>
                         <option value="ACK - St. Peters Cathedral - Voi">2. ACK - St. Peters Cathedral - Voi</option>
                         <option value="ACK Christ The King - Kitengela">3. ACK Christ The King - Kitengela</option>
-                        <option value="ACK St. James Gimu">4. ACK St. James Gimu</option>
-                        <option value="ACK St. Julian The Hospitable">5. ACK St. Julian The Hospitable</option>
+                        <option value="Friends Church (Quakers) – Lang’ata MM">4. Friends Church (Quakers) – Lang’ata MM
+                        </option>
+                        <option value="ADC - Boyani">5. ADC - Boyani</option>
                         <option value="ACK St. Jude's Huruma">6. ACK St. Jude's Huruma</option>
-                        <option value="ACK St. Mark Migosi">7. ACK St. Mark Migosi</option>
+                        <option value="ACK St. Marks – Ebenezer Choir">7. ACK St. Marks – Ebenezer Choir</option>
                         <option value="ACK St. Mary's Syokimau">8. ACK St. Mary's Syokimau</option>
-                        <option value="ACK St. Stephen's NoonKopir Kitengela">9. ACK St. Stephen's NoonKopir Kitengela</option>
+                        <option value="ACK St. Stephen's NoonKopir Kitengela">9. ACK St. Stephen's NoonKopir Kitengela
+                        </option>
                         <option value="ACK St. Thomas Aquinas">10. ACK St. Thomas Aquinas</option>
-                        <option value="African Interio Church Ilungu">11. African Interio Church Ilungu</option>
+                        <option value="Israel Church of Africa - Obede">11. Israel Church of Africa - Obede</option>
                         <option value="CCA Nairobi Northern">12. CCA Nairobi Northern</option>
-                        <option value="Church of God Athi River">13. Church of God Athi River</option>
-                        <option value="Friends Church (Quakers) - Makadara">14. Friends Church (Quakers) - Makadara</option>
-                        <option value="Friends Church (Quakers) - Kaimosi">15. Friends Church (Quakers) - Kaimosi</option>
+                        <option value="ACK St. Marks – Peace Choir">13. ACK St. Marks – Peace Choir</option>
+                        <option value="Friends Church (Quakers) - Makadara">14. Friends Church (Quakers) - Makadara
+                        </option>
+                        <option value="Friends Church (Quakers) - Kaimosi">15. Friends Church (Quakers) - Kaimosi
+                        </option>
                         <option value="Friends Church (Quakers) - Kisumu">16. Friends Church (Quakers) - Kisumu</option>
-                        <option value="Friends Church (Quakers) - Kakamega">17. Friends Church (Quakers) - Kakamega</option>
-                        <option value="Friends International Centre Church">18. Friends International Centre Church</option>
+                        <option value="Friends Church (Quakers) - Kakamega">17. Friends Church (Quakers) - Kakamega
+                        </option>
+                        <option value="Friends International Centre">18. Friends International Centre</option>
                         <option value="ACK Shauri Moyo Parish - Kisumu">19. ACK Shauri Moyo Parish - Kisumu</option>
                         <option value="Israel Church of Africa - Nairobi">20. Israel Church of Africa - Nairobi</option>
                         <option value="Salvation Army Kakamega Temple">21. Salvation Army Kakamega Temple</option>
                         <option value="Salvation Army Kyamutwoi Citadel">22. Salvation Army Kyamutwoi Citadel</option>
                         <option value="Madaraka PAG Church">23. Madaraka PAG Church</option>
                         <option value="Maram PAG Kakamega">24. Maram PAG Kakamega</option>
-                        <option value="Church of God Nyanturago">25. Church of God Nyanturago</option>
-                        <option value="Kampala Central Citadel">26. Kampala Central Citadel</option>
-                        <option value="Salvation Army - Quarry Rd Citadel">27. Salvation Army - Quarry Rd Citadel</option>
+                        <option value="Salvation Army - Kasiego">25. Salvation Army - Kasiego</option>
+                        <option value="Salvation Army Kampala Central Citadel">26. Salvation Army Kampala Central
+                            Citadel</option>
+                        <option value="Salvation Army - Quarry Rd Citadel">27. Salvation Army - Quarry Rd Citadel
+                        </option>
                         <option value="Salvation Army - Mukuli Citadel">28. Salvation Army - Mukuli Citadel</option>
                         <option value="Voi Sub-county">29. Voi Sub-county</option>
-                        <option value="Voices of Praise">30. Voices of Praise</option>
+                        <option value="Voices of Praise – Jinja Uganda">30. Voices of Praise – Jinja Uganda</option>
                         <option value="PCEA Kayole">31. PCEA Kayole</option>
                     </select>
                 </div>
@@ -183,7 +231,8 @@
                 </div>
                 <!-- Common class checkbox (always shown regardless of main class) -->
                 <div class="common-items-group">
-                    <label style="margin-top:12px; font-size:0.9em; color:#555;">Common Class Items (optional — all choirs eligible):</label>
+                    <label style="margin-top:12px; font-size:0.9em; color:#555;">Common Class Items (optional — all
+                        choirs eligible):</label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
                             <input type="checkbox" id="itemCF" value="CF">
@@ -220,27 +269,17 @@
             </table>
         </div>
 
-        <!-- EVENT DATE -->
-        <div class="form-card" style="margin-top:24px;">
-            <h2 class="section-heading">Event Details</h2>
-            <div class="form-group">
-                <label for="eventDate">Festival Date:</label>
-                <input type="date" id="eventDate" style="padding:10px 14px;border:1.5px solid #ccc;border-radius:8px;font-size:1em;font-family:inherit;width:100%;max-width:320px;box-sizing:border-box;margin-top:6px;display:block;">
-            </div>
-        </div>
 
-        <div class="form-group" style="margin-top: 24px; text-align:center;">
-            <button id="generateSchedule" class="btn-generate">Generate Order of Presentation</button>
-        </div>
-
-        <div id="scheduleResult"></div>
-    </div>
 
     <!-- EDIT CHOIR MODAL -->
-    <div id="editModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:8000;justify-content:center;align-items:center;">
-        <div style="background:#fff;border-radius:16px;padding:36px 40px;max-width:520px;width:90%;box-shadow:0 12px 48px rgba(0,0,0,0.35);position:relative;max-height:90vh;overflow-y:auto;">
-            <button id="closeEditModal" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;">✕</button>
-            <h2 style="font-family:'Cinzel',serif;color:#3d1a6e;margin-bottom:6px;font-size:1.2em;">Edit Choir Registration</h2>
+    <div id="editModal"
+        style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:8000;justify-content:center;align-items:center;">
+        <div
+            style="background:#fff;border-radius:16px;padding:36px 40px;max-width:520px;width:90%;box-shadow:0 12px 48px rgba(0,0,0,0.35);position:relative;max-height:90vh;overflow-y:auto;">
+            <button id="closeEditModal"
+                style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;">✕</button>
+            <h2 style="font-family:'Cinzel',serif;color:#3d1a6e;margin-bottom:6px;font-size:1.2em;">Edit Choir
+                Registration</h2>
             <p id="editChoirNameDisplay" style="font-weight:700;color:#333;margin-bottom:20px;font-size:1em;"></p>
 
             <div class="form-group">
@@ -275,7 +314,8 @@
                 <div class="items-hint" id="editItemsHint" style="font-size:0.85em;color:#666;margin-bottom:8px;"></div>
                 <div class="checkbox-group" id="editDynamicItems"></div>
                 <div class="common-items-group" style="margin-top:14px;">
-                    <label style="font-size:0.9em;color:#555;display:block;margin-bottom:6px;">Common Class Items (optional):</label>
+                    <label style="font-size:0.9em;color:#555;display:block;margin-bottom:6px;">Common Class Items
+                        (optional):</label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
                             <input type="checkbox" id="editItemCF" value="CF">
@@ -292,14 +332,17 @@
             <div id="editError" style="color:#c0392b;font-size:0.9em;margin-top:8px;min-height:20px;"></div>
             <div style="display:flex;gap:12px;margin-top:22px;">
                 <button id="saveEditBtn" class="btn-primary" style="flex:1;">Save Changes</button>
-                <button id="cancelEditBtn" style="flex:1;padding:12px;border:2px solid #ccc;border-radius:8px;background:#fff;cursor:pointer;font-family:inherit;font-size:1em;color:#555;">Cancel</button>
+                <button id="cancelEditBtn"
+                    style="flex:1;padding:12px;border:2px solid #ccc;border-radius:8px;background:#fff;cursor:pointer;font-family:inherit;font-size:1em;color:#555;">Cancel</button>
             </div>
         </div>
     </div>
 
     <!-- COUNTDOWN OVERLAY -->
-    <div id="countdownOverlay" style="display:none; position:fixed; top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);justify-content:center;align-items:center;z-index:9000;">
-        <div style="background:white;padding:40px 60px;border-radius:16px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.4);">
+    <div id="countdownOverlay"
+        style="display:none; position:fixed; top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);justify-content:center;align-items:center;z-index:9000;">
+        <div
+            style="background:white;padding:40px 60px;border-radius:16px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.4);">
             <h2 style="font-family:'Cinzel',serif;color:#3d1a6e;margin-bottom:16px;">Generating Programme</h2>
             <div id="countdownDisplay" style="font-size:60px;font-weight:bold;color:#3d1a6e;margin:16px 0;"></div>
             <p style="color:#666;">Please wait while we generate your order of presentation…</p>
@@ -308,7 +351,7 @@
 
     <script src="script.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // Preloader
             const preloader = document.getElementById("preloader");
             setTimeout(() => {
@@ -317,13 +360,13 @@
             }, 3000);
 
             // Tabs
-            document.getElementById('tab-preset').addEventListener('click', function() {
+            document.getElementById('tab-preset').addEventListener('click', function () {
                 this.classList.add('active');
                 document.getElementById('tab-manual').classList.remove('active');
                 document.getElementById('content-preset').classList.add('active');
                 document.getElementById('content-manual').classList.remove('active');
             });
-            document.getElementById('tab-manual').addEventListener('click', function() {
+            document.getElementById('tab-manual').addEventListener('click', function () {
                 this.classList.add('active');
                 document.getElementById('tab-preset').classList.remove('active');
                 document.getElementById('content-manual').classList.add('active');
@@ -333,7 +376,7 @@
             // Class selection → show items
             const classRadios = document.querySelectorAll('input[name="choirClass"]');
             classRadios.forEach(radio => {
-                radio.addEventListener('change', function() {
+                radio.addEventListener('change', function () {
                     updateItemsForClass(this.value);
                     if (window.handleClassRestrictionUI) handleClassRestrictionUI(this.value);
                 });
@@ -348,11 +391,11 @@
 
                 let items = [], hintText = '', prefix = '';
                 if (cls === 'super5') {
-                    prefix = 'S'; items = ['SA','SB','SC']; hintText = 'Super 5 items (SA+SB performed together in Session 1; SC in a separate session)';
+                    prefix = 'S'; items = ['SA', 'SB', 'SC']; hintText = 'Super 5 items (SA+SB performed together in Session 1; SC in a separate session)';
                 } else if (cls === 'augmented') {
-                    prefix = 'A'; items = ['AA','AB','AC']; hintText = 'Augmented items (AA+AB performed together in Session 2; AC in Session 3b)';
+                    prefix = 'A'; items = ['AA', 'AB', 'AC']; hintText = 'Augmented items (AA+AB performed together in Session 2; AC in Session 3b)';
                 } else if (cls === 'major') {
-                    prefix = 'M'; items = ['MA','MB','MC']; hintText = 'Major items (MA+MB performed together in Session 3; MC in a separate session)';
+                    prefix = 'M'; items = ['MA', 'MB', 'MC']; hintText = 'Major items (MA+MB performed together in Session 3; MC in a separate session)';
                 }
                 hint.textContent = hintText;
 
@@ -366,4 +409,5 @@
         });
     </script>
 </body>
+
 </html>
