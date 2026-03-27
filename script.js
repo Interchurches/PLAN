@@ -319,18 +319,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const header = document.createElement('div');
         header.className = 'results-header';
 
-        const eventDateInput = document.getElementById('eventDate');
-        let eventDateStr = '';
-        if (eventDateInput && eventDateInput.value) {
-            const d = new Date(eventDateInput.value + 'T00:00:00');
-            eventDateStr = d.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        } else {
-            eventDateStr = new Date().toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        }
-
         header.innerHTML = `
             <h1>ICMF — Order of Presentation</h1>
-            <p>Festival Date: <strong>${eventDateStr}</strong></p>
             <div class="results-actions">
                 <button class="btn-back" id="btnBack">← Back to Form</button>
                 <button class="btn-print" id="btnPrint">🖨 Print Programme</button>
@@ -659,4 +649,3 @@ document.addEventListener('DOMContentLoaded', function () {
     window.handleClassRestrictionUI = handleClassRestrictionUI;
     window.attachEventListeners = attachEventListeners;
 });
-`           `
